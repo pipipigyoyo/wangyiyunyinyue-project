@@ -1,0 +1,37 @@
+<!-- pages/video/video.wxml -->
+<view class="videoContainer">
+    <view class="header">
+        <image src="/static/images/video/video.jpg" />
+        <view class="search" bindtap="toSearch">搜索音乐</view>
+        <image src="/static/images/logo.png" />
+    </view>
+    <scroll-view class="navScroll" scroll-x enable-flex scroll-into-view="a{{tagId}}" scroll-with-animation>
+        <view id="a{{item.id}}" class="navItem" wx:for="{{videoList}}" wx:key="id" bindtap="handleId" data-id="{{item.id}}">
+            <view class="navContent {{item.id===tagId? 'action':''}}">{{item.name}}</view>
+        </view>
+    </scroll-view>
+    <scroll-view class="videoScroll" bindrefresherpulling="refresher" refresher-enabled refresher-triggered="{{isShowRefresher}}" bindscrolltolower="scrollToBottom" scroll-y>
+        <view class="videoItem" wx:for="{{videoGroupList}}" wx:key="index">
+            <video class="common" wx:if="{{item.data.vid===videoId}}" src="{{urlInfo.url}}" poster="{{item.data.coverUrl}}" id="{{item.data.vid}}" bindplay="handlePlay" bindtimeupdate="handleTimeUpdate" bindended="handleEnded" object-fit="fill" autoplay></video>
+            <image class="common" wx:else src="{{item.data.coverUrl}}" bindtap="handlePlay" id="{{item.data.vid}}"></image>
+            <view class="content">{{item.data.title}}</view>
+            <view class="footer">
+                <image class="avatar" src="{{item.data.creator.avatarUrl}}"></image>
+                <text class="nickName">{{item.data.creator.nickname}}</text>
+                <view class="comments_praised">
+                    <text class="item">
+                        <text class="iconfont icon-aixin"></text>
+                        <text class="count">{{item.data.praisedCount}}</text>
+                    </text>
+                    <text class="item">
+                        <text class="iconfont icon-pinglun"></text>
+                        <text class="count">{{item.data.commentCount}}</text>
+                    </text>
+                    <button open-type="share" class="item btn">
+                        <text class="iconfont icon-gengduo-shuxiang"></text>
+                    </button>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+</view>

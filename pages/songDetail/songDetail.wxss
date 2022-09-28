@@ -1,0 +1,112 @@
+/* pages/songDetail/songDetail.wxss */
+.songDetailContainer{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+.circle{
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 50%;
+    background: #fff;
+    margin: 10rpx 0;
+    z-index: 999;
+}
+.needle{
+    position: relative;
+    top: -40rpx;
+    left: 60rpx;
+    width: 192rpx;
+    height: 247rpx;
+    transform-origin: 40rpx 0;
+    transform: rotate(-20deg);
+    transition: transform 1s;
+    z-index: 998;
+}
+.needleRotate{
+    transform: rotate(0);
+    
+}
+.discContainer{
+    position: relative;
+    top: -170rpx;
+    height: 598rpx;
+    width: 598rpx;
+}
+.discAnimation{
+    animation:disc 4s linear infinite ;
+    animation-delay: 1s;
+}
+@keyframes disc{
+    from{transform: rotate(0);}
+    to{transform: rotate(360deg);}
+}
+.discContainer .disc{
+    height: 100%;
+    width: 100%;
+}
+.discContainer .discInfo{
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    width: 370rpx;
+    height: 370rpx;
+    border-radius: 50%;
+}
+.controlBar{
+    position: absolute;
+    bottom: 40rpx;
+    display: flex;
+    width: 100%;
+    border-top: 1rpx solid #fff;
+}
+.controlBar text{
+    width:20%;
+    height: 120rpx;
+    line-height: 120rpx;
+    text-align: center;
+    color: #fff;
+    font-size: 50rpx;
+}
+.controlBar .big{
+    font-size: 80rpx;
+}
+.progressControl{
+    position: absolute;
+    bottom: 200rpx;
+    width: 700rpx;
+    height: 80rpx;
+    
+    line-height: 80rpx;
+    display: flex;
+
+}
+.barControl{
+    position: relative;
+    width: 450rpx;
+    height: 4rpx;
+    
+    background: rgba(0, 0, 0, 0.4);
+    margin: auto;
+}
+.barControl .audio-currentTime-Bar{
+    position: absolute;
+    left: 0;
+    height: 4rpx;
+    background: red;
+    margin: auto;
+}
+.barControl .audio-currentTime-Bar .audio-circle{
+    position: absolute;
+    top: -6rpx;
+    right: -16rpx;
+    height: 16rpx;
+    width: 16rpx;
+    border-radius: 50%;
+    background: #fff;
+}
